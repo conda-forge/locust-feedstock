@@ -1,59 +1,60 @@
-{% set name = "locust" %}
-{% set version = "0.8" %}
-{% set sha256 = "d0f2cf5c979d1c72f5f93cc5d7626e2fbe0c11031b22227370f7c7f7eeb4f5f3" %}
+{% set name = "locustio" %}
+{% set version = "0.11.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: locust
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 93404f831114791b0756325c53b08bff73f048eeb69688be657629feaa62b507
 
 build:
   noarch: python
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed -vv .
   entry_points:
     - locust = locust.main:main
 
 requirements:
-  build:
+  host:
     - python
     - pip
   run:
-    - python
-    - gevent >=1.2.2
     - flask >=0.10.1
-    - requests >=2.9.1
+    - gevent >=1.2.2
     - msgpack-python >=0.4.2
-    - six >=1.10.0
+    - python
     - pyzmq >=16.0.2
+    - requests >=2.9.1
+    - six >=1.10.0
 
 test:
+  requires:
+    - mock
+    - coverage
+    - pytest
+    - pytest-cov
   imports:
     - locust
-    - locust.rpc
-    - locust.util
   commands:
+    - locust --version
     - locust --help
+    - pytest --pyargs locust --cov locust -k "not from_relative_path and not no_content_length_streaming"
 
 about:
-  home: https://locust.io/
+  home: https://locust.io
   license: MIT
   license_family: MIT
-  # inclusion of LICENSE file in sdist has been requested
-  # from the package authors:
-  # https://github.com/locustio/locust/issues/788
-  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE.txt'
-  summary: 'Scalable user load testing tool written in Python'
+  license_file: LICENSE
+  summary: 'Website load testing framework'
   description: |
     Locust is an easy-to-use, distributed, user load testing tool. It is
     intended for load-testing web sites (or other systems) and figuring out how
     many concurrent users a system can handle.
-  doc_url: https://docs.locust.io/
+  doc_url: https://docs.locust.io
   dev_url: https://github.com/locustio/locust
+  doc_url_source: https://github.com/locustio/locust/blob/master/docs/index.rst
 
 extra:
   recipe-maintainers:
