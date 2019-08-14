@@ -54,7 +54,7 @@ about:
     many concurrent users a system can handle.
   doc_url: https://docs.locust.io
   dev_url: https://github.com/locustio/locust
-  doc_url_source: https://github.com/locustio/locust/blob/master/docs/index.rst
+  doc_source_url: https://github.com/locustio/locust/blob/master/docs/index.rst
 
 extra:
   recipe-maintainers:
