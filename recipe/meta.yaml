@@ -28,6 +28,8 @@ requirements:
     - pyzmq >=16.0.2
     - requests >=2.9.1
     - six >=1.10.0
+    # TODO: add when available
+    # - geventhttpclient
 
 test:
   requires:
@@ -40,6 +42,8 @@ test:
   commands:
     - locust --version
     - locust --help
+    # TODO: remove when geventhttpclient is available
+    - python -c "import os, locust; os.unlink(os.path.join(os.path.dirname(locust.__file__), 'test', 'test_fasthttp.py'))"
     - pytest --pyargs locust --cov locust -k "not from_relative_path and not no_content_length_streaming"
 
 about:
@@ -59,3 +63,4 @@ about:
 extra:
   recipe-maintainers:
     - carlodri
+    - bollwyvl
