@@ -23,6 +23,7 @@ requirements:
   run:
     - flask >=0.10.1
     - gevent >=1.2.2
+    - geventhttpclient
     - msgpack-python >=0.4.2
     - python
     - pyzmq >=16.0.2
@@ -59,3 +60,4 @@ about:
 extra:
   recipe-maintainers:
     - carlodri
+    - bollwyvl
