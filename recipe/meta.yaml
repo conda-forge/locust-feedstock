@@ -21,6 +21,7 @@ requirements:
     - python
     - pip
   run:
+    - configargparse
     - flask >=0.10.1
     - gevent >=1.2.2
     - geventhttpclient
