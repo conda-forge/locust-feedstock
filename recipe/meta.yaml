@@ -36,6 +36,7 @@ test:
   requires:
     - mock
     - coverage
+    - pip
     - pytest
     - pytest-cov
   imports:
@@ -44,6 +45,7 @@ test:
     - locust --version
     - locust --help
     - pytest --pyargs locust --cov locust -k "not from_relative_path and not no_content_length_streaming"
+    - pip check
 
 about:
   home: https://locust.io
