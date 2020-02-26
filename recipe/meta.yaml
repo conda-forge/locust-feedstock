@@ -1,5 +1,5 @@
 {% set name = "locustio" %}
-{% set version = "0.14.4" %}
+{% set version = "0.14.5" %}
 
 package:
   name: locust
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a3d308f98c2ac5a45576ff53ab42438c0a38000825e662aa9bd475187ddbd388
+  sha256: 8ec934226e41ccfdf8d5609050cafcb6449ead09e8697104bfa86739a38dd036
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - locust = locust.main:main
 
@@ -50,7 +50,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'Website load testing framework'
+  summary: Website load testing framework
   description: |
     Locust is an easy-to-use, distributed, user load testing tool. It is
     intended for load-testing web sites (or other systems) and figuring out how
