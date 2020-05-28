@@ -1,5 +1,5 @@
 {% set name = "locust" %}
-{% set version = "1.0.1" %}
+{% set version = "1.0.2" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2fb461c535505b189fcb82e92093773017f1cc82fd5cf93a3a08a30317b6703f
+  sha256: d63991b3b6a736dd988dde76d3b6c23ba9455669c240173368af466cc68577d7
 
 build:
   noarch: python
@@ -22,10 +22,10 @@ requirements:
     - pip
   run:
     - configargparse >=1.0
-    - flask >=0.10.1
+    - flask >=1.1.2
     - flask-basicauth >=0.2.0
     - gevent >=1.5.0
-    - geventhttpclient
+    - geventhttpclient >=1.4.2
     - msgpack-python >=0.6.2
     - python >=3.6
     - pyzmq >=16.0.2
@@ -34,17 +34,28 @@ requirements:
 
 test:
   requires:
-    - mock
     - coverage
+    - mock
+    - pip
+    - pyquery
     - pytest
     - pytest-cov
-    - pyquery
   imports:
     - locust
   commands:
+    - python -m pip check
     - locust --version
     - locust --help
-    - pytest --pyargs locust --cov locust -k "not from_relative_path and not no_content_length_streaming"
+    - >-
+      pytest
+      --pyargs locust
+      --cov locust
+      -vv
+      -k "not (
+        from_relative_path
+        or no_content_length_streaming
+        or skip_logging
+      )"
 
 about:
   home: https://locust.io
