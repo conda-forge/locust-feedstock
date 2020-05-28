@@ -46,7 +46,16 @@ test:
     - python -m pip check
     - locust --version
     - locust --help
-    - pytest --pyargs locust --cov locust -k "not from_relative_path and not no_content_length_streaming"
+    - >-
+      pytest
+      --pyargs locust
+      --cov locust
+      -vv
+      -k "not (
+        from_relative_path
+        or no_content_length_streaming
+        or skip_logging
+      )"
 
 about:
   home: https://locust.io
