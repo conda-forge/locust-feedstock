@@ -5,7 +5,7 @@ Home: https://locust.io
 
 Package license: MIT
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Website load testing framework
 

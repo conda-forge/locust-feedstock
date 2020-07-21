@@ -1,5 +1,5 @@
 {% set name = "locust" %}
-{% set version = "1.0.2" %}
+{% set version = "1.1.1" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: d63991b3b6a736dd988dde76d3b6c23ba9455669c240173368af466cc68577d7
+  sha256: 4b9846f8bd03dc2c41a07e3ba86323f0ef5560c9a38cde13f6bd3b680d534f5f
 
 build:
   noarch: python
@@ -25,16 +25,17 @@ requirements:
     - flask >=1.1.2
     - flask-basicauth >=0.2.0
     - gevent >=1.5.0
-    - geventhttpclient >=1.4.2
+    - geventhttpclient >=1.4.4
     - msgpack-python >=0.6.2
+    - psutil >=5.6.7
     - python >=3.6
     - pyzmq >=16.0.2
     - requests >=2.9.1
-    - psutil >=5.6.7
 
 test:
   requires:
     - coverage
+    - cryptography
     - mock
     - pip
     - pyquery
