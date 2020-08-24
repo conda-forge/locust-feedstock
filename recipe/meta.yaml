@@ -1,5 +1,5 @@
 {% set name = "locust" %}
-{% set version = "1.1.1" %}
+{% set version = "1.2.2" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4b9846f8bd03dc2c41a07e3ba86323f0ef5560c9a38cde13f6bd3b680d534f5f
+  sha256: b1cf521031769d9577938afae7e9596a4a0d1aae1a5569eeb569f71cc7fb5b32
 
 build:
   noarch: python
@@ -32,6 +32,11 @@ requirements:
     - pyzmq >=16.0.2
     - requests >=2.9.1
 
+{% set skips = [
+  "from_relative_path",
+  "no_content_length_streaming",
+  "skip_logging"
+] %}
 test:
   requires:
     - coverage
@@ -47,16 +52,7 @@ test:
     - python -m pip check
     - locust --version
     - locust --help
-    - >-
-      pytest
-      --pyargs locust
-      --cov locust
-      -vv
-      -k "not (
-        from_relative_path
-        or no_content_length_streaming
-        or skip_logging
-      )"
+    - pytest --pyargs locust --cov locust -vv -k "not ({{ " or ".join(skips) }})"
 
 about:
   home: https://locust.io
