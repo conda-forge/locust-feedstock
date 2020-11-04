@@ -5,9 +5,13 @@ Home: https://locust.io
 
 Package license: MIT
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/locust-feedstock/blob/master/LICENSE.txt)
 
 Summary: Website load testing framework
+
+Development: https://github.com/locustio/locust
+
+Documentation: https://docs.locust.io
 
 Locust is an easy-to-use, distributed, user load testing tool. It is
 intended for load-testing web sites (or other systems) and figuring out how
