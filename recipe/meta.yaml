@@ -1,5 +1,5 @@
 {% set name = "locust" %}
-{% set version = "1.2.3" %}
+{% set version = "1.3.2" %}
 
 package:
   name: {{ name }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ba9f9f50e0ae0658b14dffb507a6ba47b34682e6ed91905a3861b11d8b1bf4fc
+  sha256: 5da627e68b7830074c1eb3d37b6b58b429100d0c7d523e7876c7fe02be6d12cc
 
 build:
   noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps
   entry_points:
     - locust = locust.main:main
 
@@ -24,7 +24,7 @@ requirements:
     - configargparse >=1.0
     - flask >=1.1.2
     - flask-basicauth >=0.2.0
-    - gevent >=1.5.0
+    - gevent >=20.9.0
     - geventhttpclient >=1.4.4
     - msgpack-python >=0.6.2
     - psutil >=5.6.7
@@ -52,7 +52,7 @@ test:
     - python -m pip check
     - locust --version
     - locust --help
-    - pytest --pyargs locust --cov locust -vv -k "not ({{ " or ".join(skips) }})"
+    - pytest --pyargs locust --cov locust -vv -k "not ({{ " or ".join(skips) }})" --cov-fail-under 82
 
 about:
   home: https://locust.io
