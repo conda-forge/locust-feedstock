@@ -1,5 +1,5 @@
 {% set name = "locust" %}
-{% set version = "1.4.0" %}
+{% set version = "1.4.3" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ae7b37035ba8de00e37874f3c7be29540361154814e9d003d9fae89e8e4d207c
+  sha256: b31341aafffc09ae2ab13da43917d03a5a97b68f26d982a468f62bd64309bc6e
 
 build:
   noarch: python
@@ -31,6 +31,7 @@ requirements:
     - python >=3.6
     - pyzmq >=16.0.2
     - requests >=2.9.1
+    - werkzeug >=1.0.1
 
 {% set skips = [
   "from_relative_path",
