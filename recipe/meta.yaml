@@ -22,7 +22,7 @@ requirements:
     - pip
   run:
     - configargparse >=1.0
-    - flask >=1.1.2
+    - flask ==1.1.2
     - flask-basicauth >=0.2.0
     - gevent >=20.9.0
     - geventhttpclient >=1.4.4
