@@ -24,6 +24,7 @@ requirements:
     - configargparse >=1.0
     - flask ==1.1.2
     - flask-basicauth >=0.2.0
+    - flask-cors >=3.0.10
     - gevent >=20.9.0
     - geventhttpclient >=1.4.4
     - msgpack-python >=0.6.2
