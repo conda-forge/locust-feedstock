@@ -42,6 +42,7 @@ requirements:
   "no_content_length_streaming",
   "skip_logging",
   "web_options",
+  "webserver",
 ] %}
 test:
   requires:
