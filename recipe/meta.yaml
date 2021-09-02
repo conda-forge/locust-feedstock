@@ -20,13 +20,14 @@ requirements:
   host:
     - python >=3.6
     - pip
+    - setuptools_scm
   run:
     - configargparse >=1.0
     - flask >=2
     - flask-basicauth >=0.2.0
     - flask-cors >=3.0.10
     - gevent >=20.9.0
-    - geventhttpclient >=1.4.4
+    - geventhttpclient >=1.5.1
     - msgpack-python >=0.6.2
     - psutil >=5.6.7
     - python >=3.6
@@ -57,6 +58,8 @@ test:
     - locust
   commands:
     - python -m pip check
+    - python -c "import locust; assert locust.__version__ == '{{ PKG_VERSION }}'"
+    - pip list | grep -E "locust\s*{{ PKG_VERSION.replace('.', '\.') }}"  # [unix]
     - locust --version
     - locust --help
     - pytest --pyargs locust --cov locust -vv -k "not ({{ " or ".join(skips) }})" --cov-fail-under 82
