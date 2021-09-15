@@ -39,6 +39,7 @@ requirements:
 {% set skips = [
   "autostart_w_load_shape",
   "custom_exit_code",
+  "default_headless_spawn_options_with_shape",
   "from_relative_path",
   "headless_spawn_options_wo_run_time",
   "no_content_length_streaming",
