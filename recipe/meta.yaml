@@ -1,5 +1,5 @@
 {% set name = "locust" %}
-{% set version = "2.2.2" %}
+{% set version = "2.2.3" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 49f0bf2be646f12b905a50fab8501a70434194510891e236180c59197ba77a4c
+  sha256: 138df1493c76d4279c9d13bc08e97b7444bf1be4329a7594dd24691179d12bda
 
 build:
   noarch: python
