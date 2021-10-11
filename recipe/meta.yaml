@@ -57,6 +57,7 @@ test:
     - pyquery
     - pytest
     - pytest-cov
+    - retry
   imports:
     - locust
   commands:
