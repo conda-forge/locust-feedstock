@@ -67,7 +67,7 @@ test:
     - pip list | grep -E "locust\s*{{ PKG_VERSION | replace('.', '\.') }}"  # [unix]
     - locust --version
     - locust --help
-    - pytest --pyargs locust --cov locust -vv -k "not ({{ " or ".join(skips) }})" --cov-report term-missing:skip-covered --no-cov-on-fail --cov-fail-under 82
+    - pytest --pyargs locust --cov locust -vv -k "not ({{ " or ".join(skips) }})" --cov-report term-missing:skip-covered --no-cov-on-fail --cov-fail-under 81
 
 about:
   home: https://locust.io
