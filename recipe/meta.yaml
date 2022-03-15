@@ -19,7 +19,7 @@ requirements:
   host:
     - python >=3.6
     - pip
-    - setuptools_scm
+    - setuptools_scm <=6.0.1
   run:
     - configargparse >=1.0
     - flask >=2
