@@ -1,4 +1,4 @@
-{% set version = "2.10.0" %}
+{% set version = "2.10.1" %}
 
 package:
   name: locust
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/l/locust/locust-{{ version }}.tar.gz
-  sha256: 932771787cc22c8ef68ae52963d5f545667d12fbe9e2498ad97e5dc1401393d5
+  sha256: 4c6844f50f7b50b5328f310431375ad62dfb1c786a83641357838aa02e1f2382
 
 build:
   noarch: python
@@ -69,7 +69,7 @@ test:
     - locust --version
     - locust --help
     # TODO: restore coverage threshold, dynamic code getting skipped, throwing many warnings --cov-fail-under 80
-    - pytest --pyargs locust --cov locust -vv -k "not ({{ " or ".join(skips) }})" --cov-report term-missing:skip-covered --no-cov-on-fail 
+    - pytest --pyargs locust --cov locust -vv -k "not ({{ " or ".join(skips) }})" --cov-report term-missing:skip-covered --no-cov-on-fail
 about:
   home: https://locust.io
   license: MIT
