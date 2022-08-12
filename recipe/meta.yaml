@@ -68,6 +68,8 @@ test:
     - pip list | grep -E "locust\s*{{ PKG_VERSION | replace('.', '\.') }}"  # [unix]
     - locust --version
     - locust --help
+    # make empty test fixture folder
+    - python -c '__import__("pathlib").Path("locust/test").mkdir(parents=True)'
     # TODO: restore coverage threshold, dynamic code getting skipped, throwing many warnings --cov-fail-under 80
     - pytest --pyargs locust --cov locust -vv -k "not ({{ " or ".join(skips) }})" --cov-report term-missing:skip-covered --no-cov-on-fail
 about:
