@@ -27,12 +27,12 @@ requirements:
     - flask-basicauth >=0.2.0
     - flask-cors >=3.0.10
     - gevent >=20.12.1
-    - geventhttpclient >=1.5.1
+    - geventhttpclient >=2.0.2
     - msgpack-python >=0.6.2
     - psutil >=5.6.7
     - python >=3.7
     - pywin32-on-windows
-    - pyzmq >=22.2.1,<23.0.0
+    - pyzmq >=22.2.1,!=23.0.0
     - requests >=2.23.0
     - roundrobin >=0.0.2
     - typing-extensions >=3.7.4.3
