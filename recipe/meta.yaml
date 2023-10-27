@@ -1,4 +1,4 @@
-{% set version = "2.17.0" %}
+{% set version = "2.18.0" %}
 
 package:
   name: locust
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/l/locust/locust-{{ version }}.tar.gz
-  sha256: e50bb4647370c22d27010cd700cc87a519a0f25fef012efa7b42af68982b58f0
+  sha256: f8d668c2c33518c705664bc869791d58fc98ba8f1aadbf2335be36e4e681feae
 
 build:
   noarch: python
@@ -17,7 +17,7 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python >=3.8
     - pip
     - setuptools_scm >=6.2
     - wheel
@@ -30,40 +30,49 @@ requirements:
     - geventhttpclient >=2.0.2
     - msgpack-python >=0.6.2
     - psutil >=5.6.7
-    - python >=3.7
+    - python >=3.8
     - pywin32-on-windows
     - pyzmq >=22.2.1,!=23.0.0
     - requests >=2.23.0
     - roundrobin >=0.0.2
-    - typing-extensions >=3.7.4.3
     - werkzeug >=2.0.0
 
-{% set skips = [
-  "autostart_w_load_shape",
-  "custom_arguments",
-  "custom_exit_code",
-  "default_headless_spawn_options_with_shape",
-  "from_relative_path",
-  "headless_spawn_options_wo_run_time",
-  "no_content_length_streaming",
-  "skip_logging",
-  "web_options",
-  "webserver",
-] %}
 test:
+  {% set skips = [
+    "autostart_w_load_shape",
+    "custom_arguments",
+    "custom_exit_code",
+    "default_headless_spawn_options_with_shape",
+    "from_relative_path",
+    "headless_spawn_options_wo_run_time",
+    "no_content_length_streaming",
+    "skip_logging",
+    "web_options",
+    "webserver",
+  ] %}
+
+  # added on https://github.com/conda-forge/locust-feedstock/pull/82
+  {% set skips = skips + [
+    "autostart_mutliple_locustfiles_with_shape",
+    "graceful_exit_when_keyboard_interrupt",
+    "percentile_parameter",
+    "run_autostart_with_multiple_locustfiles",
+    "run_with_userclass_picker",
+    "worker_indexes",
+  ] %}
+
   requires:
-    - coverage
+    - pip
+    # https://github.com/locustio/locust/blob/master/tox.ini
     - cryptography
     - mock
-    - pip
     - pyquery
-    - pytest
     - pytest-cov
     - retry
   imports:
     - locust
   commands:
-    - python -m pip check
+    - pip check
     - python -c "import locust; assert locust.__version__ == '{{ PKG_VERSION }}'"
     - pip list | grep -E "locust\s*{{ PKG_VERSION | replace('.', '\.') }}"  # [unix]
     - locust --version
@@ -71,7 +80,7 @@ test:
     # make empty test fixture folder
     - python -c '__import__("pathlib").Path("locust/test").mkdir(parents=True)'
     # TODO: restore coverage threshold, dynamic code getting skipped, throwing many warnings --cov-fail-under 80
-    - pytest --pyargs locust --cov locust -vv -k "not ({{ " or ".join(skips) }})" --cov-report term-missing:skip-covered --no-cov-on-fail
+    - pytest -vv --color=yes --tb=long --pyargs locust --cov=locust --cov=branch --cov-report=term-missing:skip-covered --no-cov-on-fail -k "not ({{ " or ".join(skips) }})"
 about:
   home: https://locust.io
   license: MIT
