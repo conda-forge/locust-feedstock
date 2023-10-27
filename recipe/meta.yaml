@@ -37,30 +37,30 @@ requirements:
     - roundrobin >=0.0.2
     - werkzeug >=2.0.0
 
-{% set skips = [
-  "autostart_w_load_shape",
-  "custom_arguments",
-  "custom_exit_code",
-  "default_headless_spawn_options_with_shape",
-  "from_relative_path",
-  "headless_spawn_options_wo_run_time",
-  "no_content_length_streaming",
-  "skip_logging",
-  "web_options",
-  "webserver",
-] %}
-
-# added on https://github.com/conda-forge/locust-feedstock/pull/82
-{% set skips = skips + [
-  "autostart_mutliple_locustfiles_with_shape",
-  "graceful_exit_when_keyboard_interrupt",
-  "percentile_parameter",
-  "run_autostart_with_multiple_locustfiles",
-  "run_with_userclass_picker",
-  "worker_indexes",
-] %}
-
 test:
+  {% set skips = [
+    "autostart_w_load_shape",
+    "custom_arguments",
+    "custom_exit_code",
+    "default_headless_spawn_options_with_shape",
+    "from_relative_path",
+    "headless_spawn_options_wo_run_time",
+    "no_content_length_streaming",
+    "skip_logging",
+    "web_options",
+    "webserver",
+  ] %}
+
+  # added on https://github.com/conda-forge/locust-feedstock/pull/82
+  {% set skips = skips + [
+    "autostart_mutliple_locustfiles_with_shape",
+    "graceful_exit_when_keyboard_interrupt",
+    "percentile_parameter",
+    "run_autostart_with_multiple_locustfiles",
+    "run_with_userclass_picker",
+    "worker_indexes",
+  ] %}
+
   requires:
     - pip
     # https://github.com/locustio/locust/blob/master/tox.ini
@@ -80,7 +80,7 @@ test:
     # make empty test fixture folder
     - python -c '__import__("pathlib").Path("locust/test").mkdir(parents=True)'
     # TODO: restore coverage threshold, dynamic code getting skipped, throwing many warnings --cov-fail-under 80
-    - pytest --pyargs=locust --cov=locust --color=yes --tb=long -vv --cov-report=term-missing:skip-covered --no-cov-on-fail -k "not ({{ " or ".join(skips) }})"
+    - pytest -vv --color=yes --tb=long --pyargs locust --cov=locust --cov=branch --cov-report=term-missing:skip-covered --no-cov-on-fail -k "not ({{ " or ".join(skips) }})"
 about:
   home: https://locust.io
   license: MIT
