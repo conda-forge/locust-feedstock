@@ -1,4 +1,4 @@
-{% set version = "2.17.0" %}
+{% set version = "2.18.0" %}
 
 package:
   name: locust
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/l/locust/locust-{{ version }}.tar.gz
-  sha256: e50bb4647370c22d27010cd700cc87a519a0f25fef012efa7b42af68982b58f0
+  sha256: f8d668c2c33518c705664bc869791d58fc98ba8f1aadbf2335be36e4e681feae
 
 build:
   noarch: python
