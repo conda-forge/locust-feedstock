@@ -61,6 +61,13 @@ test:
     "worker_indexes",
   ] %}
 
+  # added on https://github.com/conda-forge/locust-feedstock/pull/83
+  {% set skips = skips + [
+    "autostart_w_run_time",
+    "autostart_wo_run_time",
+    "run_headless_with_multiple_locustfiles",
+  ] %}
+
   requires:
     - pip
     # https://github.com/locustio/locust/blob/master/tox.ini
