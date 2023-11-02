@@ -1,4 +1,4 @@
-{% set version = "2.18.0" %}
+{% set version = "2.18.1" %}
 
 package:
   name: locust
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/l/locust/locust-{{ version }}.tar.gz
-  sha256: f8d668c2c33518c705664bc869791d58fc98ba8f1aadbf2335be36e4e681feae
+  sha256: 503985a240f8f8098636c9493689caca2cc923b83f241393bb2c92bde5801278
 
 build:
   noarch: python
@@ -59,6 +59,13 @@ test:
     "run_autostart_with_multiple_locustfiles",
     "run_with_userclass_picker",
     "worker_indexes",
+  ] %}
+
+  # added on https://github.com/conda-forge/locust-feedstock/pull/83
+  {% set skips = skips + [
+    "autostart_w_run_time",
+    "autostart_wo_run_time",
+    "run_headless_with_multiple_locustfiles",
   ] %}
 
   requires:
