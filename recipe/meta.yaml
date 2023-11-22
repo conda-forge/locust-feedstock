@@ -1,4 +1,4 @@
-{% set version = "2.18.4" %}
+{% set version = "2.19.0" %}
 
 package:
   name: locust
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/l/locust/locust-{{ version }}.tar.gz
-  sha256: e58ba16d82d6f0bc42be882438799bc6eb6236918e50a7eaf207e87cb6da6068
+  sha256: 091bb8ee321a9a63e160d0f6de0a0819c62f18378e44986bc5d446d017875aa6
 
 build:
   noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv --no-deps
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - locust = locust.main:main
 
@@ -22,17 +22,17 @@ requirements:
     - setuptools_scm >=6.2
     - wheel
   run:
-    - configargparse >=1.0
+    - configargparse >=1.5.5
     - flask >=2.0.0
     - flask-basicauth >=0.2.0
     - flask-cors >=3.0.10
-    - gevent >=20.12.1
-    - geventhttpclient >=2.0.2
-    - msgpack-python >=0.6.2
-    - psutil >=5.6.7
+    - gevent >=22.10.2
+    - geventhttpclient >=2.0.11
+    - msgpack-python >=1.0.0
+    - psutil >=5.9.1
     - python >=3.8
     - pywin32-on-windows
-    - pyzmq >=22.2.1,!=23.0.0
+    - pyzmq >=25.0.0
     - requests >=2.23.0
     - roundrobin >=0.0.2
     - werkzeug >=2.0.0
@@ -67,6 +67,12 @@ test:
     "autostart_wo_run_time",
     "run_headless_with_multiple_locustfiles",
   ] %}
+
+  # added on https://github.com/conda-forge/locust-feedstock/pull/87
+  {% set skips = skips + [
+    "workers_shut_down_if_master_is_gone",
+  ] %}
+
 
   requires:
     - pip
