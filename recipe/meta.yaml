@@ -68,6 +68,12 @@ test:
     "run_headless_with_multiple_locustfiles",
   ] %}
 
+  # added on https://github.com/conda-forge/locust-feedstock/pull/87
+  {% set skips = skips + [
+    "workers_shut_down_if_master_is_gone",
+  ] %}
+
+
   requires:
     - pip
     # https://github.com/locustio/locust/blob/master/tox.ini
