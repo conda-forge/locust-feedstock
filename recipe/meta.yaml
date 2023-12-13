@@ -1,4 +1,4 @@
-{% set version = "2.19.1" %}
+{% set version = "2.20.0" %}
 
 package:
   name: locust
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/l/locust/locust-{{ version }}.tar.gz
-  sha256: 5c21609b1395833dc0b4bb3ddaaf709a88f6e70950aefce86e11eb5944fe9217
+  sha256: b6f78af64bc5066babe54836f796469906cd606b01f34ee788986d0b1fbac99a
 
 build:
   noarch: python
@@ -72,7 +72,6 @@ test:
   {% set skips = skips + [
     "workers_shut_down_if_master_is_gone",
   ] %}
-  
   # added on https://github.com/conda-forge/locust-feedstock/pull/88
   {% set skips = skips + [
     "processes_ctrl_c",
