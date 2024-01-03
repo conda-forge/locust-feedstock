@@ -33,7 +33,7 @@ requirements:
     - python >=3.8
     - pywin32-on-windows
     - pyzmq >=25.0.0
-    - requests >=2.23.0
+    - requests >=2.26.0
     - roundrobin >=0.0.2
     - werkzeug >=2.0.0
 
