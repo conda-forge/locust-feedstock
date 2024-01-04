@@ -91,7 +91,6 @@ test:
     - pyquery
     - retry
     # extras
-    - coverage
     - pytest-timeout
   imports:
     - locust
@@ -103,10 +102,7 @@ test:
     - locust --help
     # make empty test fixture folder
     - python -c '__import__("pathlib").Path("locust/test").mkdir(parents=True)'
-    - coverage run --source=locust --branch -m pytest -vv --color=yes --tb=long --pyargs locust -k "not ({{ " or ".join(skips) }})" --timeout=300
-    # TODO: restore coverage threshold, dynamic code getting skipped, throwing many warnings 
-    # --fail-under 80
-    - coverage report --show-missing --skip-covered
+    - pytest -vv --color=yes --tb=long --pyargs locust -k "not ({{ " or ".join(skips) }})" --timeout=300
 about:
   home: https://locust.io
   license: MIT
