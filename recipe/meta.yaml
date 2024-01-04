@@ -77,6 +77,11 @@ test:
     "processes_ctrl_c",
     "processes_workers_quit_unexpected"
   ] %}
+  # added on https://github.com/conda-forge/locust-feedstock/pull/90
+  {% set skips = skips + [
+    "client_recv",
+    "client_send",
+  ] %}
 
   requires:
     - pip
