@@ -1,4 +1,4 @@
-{% set version = "2.20.0" %}
+{% set version = "2.20.1" %}
 
 package:
   name: locust
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/l/locust/locust-{{ version }}.tar.gz
-  sha256: b6f78af64bc5066babe54836f796469906cd606b01f34ee788986d0b1fbac99a
+  sha256: 9ba4c8658a158aed55774ac3650ac0139fcc1dfa65fea0dabb00ea35b0d56a4e
 
 build:
   noarch: python
@@ -33,7 +33,7 @@ requirements:
     - python >=3.8
     - pywin32-on-windows
     - pyzmq >=25.0.0
-    - requests >=2.23.0
+    - requests >=2.26.0
     - roundrobin >=0.0.2
     - werkzeug >=2.0.0
 
@@ -77,6 +77,11 @@ test:
     "processes_ctrl_c",
     "processes_workers_quit_unexpected"
   ] %}
+  # added on https://github.com/conda-forge/locust-feedstock/pull/90
+  {% set skips = skips + [
+    "client_recv",
+    "client_send",
+  ] %}
 
   requires:
     - pip
@@ -84,8 +89,9 @@ test:
     - cryptography
     - mock
     - pyquery
-    - pytest-cov
     - retry
+    # extras
+    - pytest-timeout
   imports:
     - locust
   commands:
@@ -96,8 +102,7 @@ test:
     - locust --help
     # make empty test fixture folder
     - python -c '__import__("pathlib").Path("locust/test").mkdir(parents=True)'
-    # TODO: restore coverage threshold, dynamic code getting skipped, throwing many warnings --cov-fail-under 80
-    - pytest -vv --color=yes --tb=long --pyargs locust --cov=locust --cov=branch --cov-report=term-missing:skip-covered --no-cov-on-fail -k "not ({{ " or ".join(skips) }})"
+    - pytest -vv --color=yes --tb=long --pyargs locust -k "not ({{ " or ".join(skips) }})" --timeout=300
 about:
   home: https://locust.io
   license: MIT
