@@ -84,8 +84,10 @@ test:
     - cryptography
     - mock
     - pyquery
-    - pytest-cov
     - retry
+    # extras
+    - coverage
+    - pytest-timeout
   imports:
     - locust
   commands:
@@ -96,8 +98,10 @@ test:
     - locust --help
     # make empty test fixture folder
     - python -c '__import__("pathlib").Path("locust/test").mkdir(parents=True)'
-    # TODO: restore coverage threshold, dynamic code getting skipped, throwing many warnings --cov-fail-under 80
-    - pytest -vv --color=yes --tb=long --pyargs locust --cov=locust --cov=branch --cov-report=term-missing:skip-covered --no-cov-on-fail -k "not ({{ " or ".join(skips) }})"
+    - coverage run --source=locust --branch -m pytest -vv --color=yes --tb=long --pyargs locust -k "not ({{ " or ".join(skips) }})" --timeout=300
+    # TODO: restore coverage threshold, dynamic code getting skipped, throwing many warnings 
+    # --fail-under 80
+    - coverage report --show-missing --skip-covered
 about:
   home: https://locust.io
   license: MIT
