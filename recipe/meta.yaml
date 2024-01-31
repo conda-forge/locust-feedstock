@@ -1,4 +1,4 @@
-{% set version = "2.20.1" %}
+{% set version = "2.21.0" %}
 
 package:
   name: locust
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/l/locust/locust-{{ version }}.tar.gz
-  sha256: 9ba4c8658a158aed55774ac3650ac0139fcc1dfa65fea0dabb00ea35b0d56a4e
+  sha256: 682f27d6696a2eea9f04f2c3ba87aab255a90285ba3a57c3c40444f646b39726
 
 build:
   noarch: python
@@ -24,8 +24,8 @@ requirements:
   run:
     - configargparse >=1.5.5
     - flask >=2.0.0
-    - flask-basicauth >=0.2.0
     - flask-cors >=3.0.10
+    - flask-login >=0.6.3
     - gevent >=22.10.2
     - geventhttpclient >=2.0.11
     - msgpack-python >=1.0.0
