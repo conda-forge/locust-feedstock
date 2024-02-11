@@ -1,4 +1,4 @@
-{% set version = "2.23.0" %}
+{% set version = "2.23.1" %}
 
 package:
   name: locust
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/l/locust/locust-{{ version }}.tar.gz
-  sha256: f4857bc0a30578724274d7f1ef5c50c3953735718b31019993c40d5797dbddce
+  sha256: 6cc729729e5ebf5852fc9d845302cfcf0ab0132f198e68b3eb0c88b438b6a863
 
 build:
   noarch: python
@@ -78,13 +78,11 @@ test:
     "processes_ctrl_c",
     "processes_workers_quit_unexpected"
   ] %}
-  
   # added on https://github.com/conda-forge/locust-feedstock/pull/90
   {% set skips = skips + [
     "client_recv",
     "client_send",
   ] %}
-  
   # added on https://github.com/conda-forge/locust-feedstock/pull/94
   {% set skips = skips + [
     "locustfile_from_url",
