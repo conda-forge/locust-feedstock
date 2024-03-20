@@ -35,7 +35,7 @@ requirements:
     - pyzmq >=25.0.0
     - requests >=2.26.0
     - roundrobin >=0.0.2
-    - tomli
+    - tomli >=1.1.0
     - werkzeug >=2.0.0
 
 test:
