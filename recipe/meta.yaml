@@ -1,4 +1,4 @@
-{% set version = "2.24.0" %}
+{% set version = "2.24.1" %}
 
 package:
   name: locust
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/l/locust/locust-{{ version }}.tar.gz
-  sha256: 6cffa378d995244a7472af6be1d6139331f19aee44e907deee73e0281252804d
+  sha256: 094161d44d94839bf1120fd7898b7abb9c143833743ba7c096beb470a236b9a7
 
 build:
   noarch: python
@@ -35,7 +35,7 @@ requirements:
     - pyzmq >=25.0.0
     - requests >=2.26.0
     - roundrobin >=0.0.2
-    - tomli
+    - tomli >=1.1.0
     - werkzeug >=2.0.0
 
 test:
