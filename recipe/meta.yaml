@@ -27,7 +27,7 @@ requirements:
     - flask-cors >=3.0.10
     - flask-login >=0.6.3
     - gevent >=22.10.2
-    - geventhttpclient ==2.2.1
+    - geventhttpclient >=2.3.1
     - msgpack-python >=1.0.0
     - psutil >=5.9.1
     - python >=3.9
@@ -97,14 +97,15 @@ test:
     - retry
     # extras
     - pytest-timeout
+    - m2-grep  # [win]
   imports:
     - locust
   commands:
     - pip check
-    - python -c "import locust; assert locust.__version__ == '{{ PKG_VERSION }}'"
-    - pip list | grep -E "locust\s*{{ PKG_VERSION | replace('.', '\.') }}"  # [unix]
     - locust --version
     - locust --help
+    - python -c "import locust; assert locust.__version__ == '{{ PKG_VERSION }}'"
+    - pip list | grep -iE "^locust\s*{{ PKG_VERSION | replace('.', '\.') }}$"
     # make empty test fixture folder
     - python -c '__import__("pathlib").Path("locust/test").mkdir(parents=True)'
     - pytest -vv --color=yes --tb=long --pyargs locust -k "not ({{ " or ".join(skips) }})" --timeout=300
