@@ -1,4 +1,4 @@
-{% set version = "2.27.0" %}
+{% set version = "2.28.0" %}
 
 package:
   name: locust
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/l/locust/locust-{{ version }}.tar.gz
-  sha256: 0c6d3d2523976dafe734012c41b2f7d9ad7120cbcea76d47d80cec5d6d139905
+  sha256: 260557eec866f7e34a767b6c916b5b278167562a280480aadb88f43d962fbdeb
 
 build:
   noarch: python
@@ -27,7 +27,7 @@ requirements:
     - flask-cors >=3.0.10
     - flask-login >=0.6.3
     - gevent >=22.10.2
-    - geventhttpclient ==2.2.1
+    - geventhttpclient >=2.3.1
     - msgpack-python >=1.0.0
     - psutil >=5.9.1
     - python >=3.9
@@ -87,6 +87,10 @@ test:
   {% set skips = skips + [
     "locustfile_from_url",
   ] %}
+  # added on https://github.com/conda-forge/locust-feedstock/pull/103
+  {% set skips = skips + [
+    "(ZMQRPC_tests and constructor)"
+  ] %}
 
   requires:
     - pip
@@ -97,14 +101,15 @@ test:
     - retry
     # extras
     - pytest-timeout
+    - m2-grep  # [win]
   imports:
     - locust
   commands:
     - pip check
-    - python -c "import locust; assert locust.__version__ == '{{ PKG_VERSION }}'"
-    - pip list | grep -E "locust\s*{{ PKG_VERSION | replace('.', '\.') }}"  # [unix]
     - locust --version
     - locust --help
+    - python -c "import locust; assert locust.__version__ == '{{ PKG_VERSION }}'"
+    - pip list | grep -iE "^locust\s*{{ PKG_VERSION | replace('.', '\.') }}$"
     # make empty test fixture folder
     - python -c '__import__("pathlib").Path("locust/test").mkdir(parents=True)'
     - pytest -vv --color=yes --tb=long --pyargs locust -k "not ({{ " or ".join(skips) }})" --timeout=300
