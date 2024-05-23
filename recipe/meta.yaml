@@ -87,6 +87,10 @@ test:
   {% set skips = skips + [
     "locustfile_from_url",
   ] %}
+  # added on https://github.com/conda-forge/locust-feedstock/pull/103
+  {% set skips = skips + [
+    "(ZMQRPC_tests and constructor)"
+  ] %}
 
   requires:
     - pip
