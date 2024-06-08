@@ -33,7 +33,9 @@ requirements:
     - python >=3.9
     - pywin32-on-windows
     - pyzmq >=25.0.0
-    - requests >=2.26.0
+    # - requests >=2.26.0
+    # upstream tightens this only for py>3.11... not worth breaking noarch
+    - requests >=2.32.2
     - tomli >=1.1.0
     - werkzeug >=2.0.0
 
