@@ -37,6 +37,7 @@ requirements:
     # upstream tightens this only for py>3.11... not worth breaking noarch
     - requests >=2.32.2
     - tomli >=1.1.0
+    - typing_extensions >=4.6.0
     - werkzeug >=2.0.0
 
 test:
