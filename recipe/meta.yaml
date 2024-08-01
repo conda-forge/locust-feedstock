@@ -5,22 +5,32 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/l/locust/locust-{{ version }}.tar.gz
-  sha256: 8923aefc9bca15e9496c6bbc1e1e9817cb6cbe4b578099bab3677b2316b110f5
+  url: https://github.com/locustio/locust/archive/refs/tags/{{ version }}.tar.gz
+  sha256: 66ab5aed5a7bfa81af64d96f857a137c866ce46a8ec862a72262f63f29ea11bd
 
 build:
   noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script_env:
+    - POETRY_DYNAMIC_VERSIONING_BYPASS={{ version }}
+    - SKIP_PRE_BUILD=true
+  script:
+    - rm package.json || del package.json
+    - cd locust/webui
+    - yarn
+    - yarn build
+    - cd ../..
+    - {{ PYTHON }} -m pip install . -vvv --no-deps --no-build-isolation
   entry_points:
     - locust = locust.main:main
 
 requirements:
   host:
-    - python >=3.9
     - pip
     - poetry-core >=1.0.0
     - poetry-dynamic-versioning >=1.0.0,<2.0.0
+    - python >=3.9
+    - yarn <2
   run:
     - configargparse >=1.5.5
     - flask >=2.0.0
@@ -41,60 +51,6 @@ requirements:
     - werkzeug >=2.0.0
 
 test:
-  {% set skips = [
-    "autostart_w_load_shape",
-    "custom_arguments",
-    "custom_exit_code",
-    "default_headless_spawn_options_with_shape",
-    "from_relative_path",
-    "headless_spawn_options_wo_run_time",
-    "no_content_length_streaming",
-    "skip_logging",
-    "web_options",
-    "webserver",
-  ] %}
-
-  # added on https://github.com/conda-forge/locust-feedstock/pull/82
-  {% set skips = skips + [
-    "autostart_mutliple_locustfiles_with_shape",
-    "graceful_exit_when_keyboard_interrupt",
-    "percentile_parameter",
-    "run_autostart_with_multiple_locustfiles",
-    "run_with_userclass_picker",
-    "worker_indexes",
-  ] %}
-
-  # added on https://github.com/conda-forge/locust-feedstock/pull/83
-  {% set skips = skips + [
-    "autostart_w_run_time",
-    "autostart_wo_run_time",
-    "run_headless_with_multiple_locustfiles",
-  ] %}
-
-  # added on https://github.com/conda-forge/locust-feedstock/pull/87
-  {% set skips = skips + [
-    "workers_shut_down_if_master_is_gone",
-  ] %}
-
-  # added on https://github.com/conda-forge/locust-feedstock/pull/88
-  {% set skips = skips + [
-    "processes_ctrl_c",
-    "processes_workers_quit_unexpected"
-  ] %}
-  # added on https://github.com/conda-forge/locust-feedstock/pull/90
-  {% set skips = skips + [
-    "client_recv",
-    "client_send",
-  ] %}
-  # added on https://github.com/conda-forge/locust-feedstock/pull/94
-  {% set skips = skips + [
-    "locustfile_from_url",
-  ] %}
-  # added on https://github.com/conda-forge/locust-feedstock/pull/103
-  {% set skips = skips + [
-    "(ZMQRPC_tests and constructor)"
-  ] %}
-
   requires:
     - pip
     # https://github.com/locustio/locust/blob/master/tox.ini
@@ -105,6 +61,8 @@ test:
     # extras
     - pytest-timeout
     - m2-grep  # [win]
+  source_files:
+    - locust/test
   imports:
     - locust
   commands:
@@ -113,9 +71,7 @@ test:
     - locust --help
     - python -c "import locust; assert locust.__version__ == '{{ PKG_VERSION }}'"
     - pip list | grep -iE "^locust\s*{{ PKG_VERSION | replace('.', '\.') }}$"
-    # make empty test fixture folder
-    - python -c '__import__("pathlib").Path("locust/test").mkdir(parents=True)'
-    - pytest -vv --color=yes --tb=long --pyargs locust -k "not ({{ " or ".join(skips) }})" --timeout=300
+    - locust --version | grep -iE "{{ version.replace('.', '\.') }}"
 about:
   home: https://locust.io
   license: MIT
