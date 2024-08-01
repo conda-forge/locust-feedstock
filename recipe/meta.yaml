@@ -19,8 +19,8 @@ requirements:
   host:
     - python >=3.9
     - pip
-    - setuptools_scm >=6.2
-    - wheel
+    - poetry-core >=1.0.0
+    - poetry-dynamic-versioning >=1.0.0,<2.0.0
   run:
     - configargparse >=1.5.5
     - flask >=2.0.0
