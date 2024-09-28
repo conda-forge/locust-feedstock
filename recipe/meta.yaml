@@ -1,4 +1,4 @@
-{% set version = "2.31.7" %}
+{% set version = "2.31.8" %}
 
 package:
   name: locust
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/locustio/locust/archive/refs/tags/{{ version }}.tar.gz
-  sha256: e0cc6c895345e62f1099c932f553aa02e1f25d771004b1bdc3afd54c772d3610
+  sha256: b0574274425a06ee13a0dcfa12dab1077b47cf075343f7cca20d9f1ddbb6cab4
 
 build:
   noarch: python
