@@ -1,4 +1,5 @@
-{% set version = "2.32.1" %}
+{% set version = "2.32.2" %}
+{% set python_min = python_min | default("3.9") %}
 
 package:
   name: locust
@@ -6,7 +7,7 @@ package:
 
 source:
   url: https://github.com/locustio/locust/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 4fc522f9be7284e573df9dbe252f3ae2cfe4bd31e89dcf1bacbd7793d6732185
+  sha256: f30a4a17e68503c01cb518bb96c6a20fae8d99bd35dd76feeea01224dafd07e3
 
 build:
   noarch: python
@@ -29,7 +30,7 @@ requirements:
     - pip
     - poetry-core >=1.0.0
     - poetry-dynamic-versioning >=1.0.0,<2.0.0
-    - python >=3.9
+    - python {{ python_min }}.*
     - yarn <2
   run:
     - configargparse >=1.5.5
@@ -40,7 +41,7 @@ requirements:
     - geventhttpclient >=2.3.1
     - msgpack-python >=1.0.0
     - psutil >=5.9.1
-    - python >=3.9
+    - python >={{ python_min }}
     - pywin32-on-windows
     - pyzmq >=25.0.0
     # - requests >=2.26.0
@@ -52,6 +53,7 @@ requirements:
 
 test:
   requires:
+    - python {{ python_min }}.*
     - pip
     # https://github.com/locustio/locust/blob/master/tox.ini
     - cryptography
