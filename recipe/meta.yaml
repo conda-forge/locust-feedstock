@@ -56,7 +56,6 @@ test:
     - pytest {{ python_min }}.*
     - pip
     # https://github.com/locustio/locust/blob/master/tox.ini
-    - pytest >=8.3,<9
     - cryptography
     - mock
     - pyquery
