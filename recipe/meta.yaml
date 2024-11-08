@@ -53,7 +53,7 @@ requirements:
 
 test:
   requires:
-    - pytest {{ python_min }}.*
+    - python {{ python_min }}.*
     - pip
     # https://github.com/locustio/locust/blob/master/tox.ini
     - cryptography
