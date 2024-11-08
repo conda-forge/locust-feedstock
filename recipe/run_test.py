@@ -44,6 +44,8 @@ SKIPS = [
     "locustfile_from_url",
     # added on https://github.com/conda-forge/locust-feedstock/pull/103
     "(ZMQRPC_tests and constructor)",
+    # added on https://github.com/conda-forge/locust-feedstock/pull/119
+    "format_utc_timestamp"
 ]
 
 
