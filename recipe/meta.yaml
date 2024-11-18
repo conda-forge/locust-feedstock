@@ -73,7 +73,7 @@ test:
     - locust --help
     - python -c "import locust; assert locust.__version__ == '{{ PKG_VERSION }}'"
     - pip list | grep -iE "^locust\s*{{ PKG_VERSION | replace('.', '\.') }}$"
-    - locust --version | grep -iE {{ version.replace('.', '\.') }}
+    - locust --version | grep -iE "{{ version.replace('.', '\.') }}"
 about:
   home: https://locust.io
   license: MIT
