@@ -1,4 +1,4 @@
-{% set version = "2.32.2" %}
+{% set version = "2.32.3" %}
 {% set python_min = python_min | default("3.9") %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/locustio/locust/archive/refs/tags/{{ version }}.tar.gz
-  sha256: f30a4a17e68503c01cb518bb96c6a20fae8d99bd35dd76feeea01224dafd07e3
+  sha256: 0b748e0a82eb5ae06a9e3aedd7e1b0051246d0c1bcee81954ba13f8f85c44d24
 
 build:
   noarch: python
