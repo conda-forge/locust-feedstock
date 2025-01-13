@@ -1,5 +1,4 @@
-{% set version = "2.32.5" %}
-{% set python_min = python_min | default("3.9") %}
+{% set version = "2.32.6" %}
 
 package:
   name: locust
@@ -7,11 +6,11 @@ package:
 
 source:
   url: https://github.com/locustio/locust/archive/refs/tags/{{ version }}.tar.gz
-  sha256: c184f46e7c35571972df517264f754dedbbc5eded36a281c01982e23beb23b35
+  sha256: f56064a450eceea3e99ae93e951de487e938cc6657076a5181a3cf3bbc459f96
 
 build:
-  noarch: python
   number: 0
+  noarch: python
   script_env:
     - POETRY_DYNAMIC_VERSIONING_BYPASS={{ version }}
     - SKIP_PRE_BUILD=true
@@ -21,14 +20,14 @@ build:
     - yarn
     - yarn build
     - cd ../..
-    - {{ PYTHON }} -m pip install . -vvv --no-deps --no-build-isolation
+    - {{ PYTHON }} -m pip install . -vvv --no-deps --no-build-isolation --disable-pip-version-check
   entry_points:
     - locust = locust.main:main
 
 requirements:
   host:
     - pip
-    - poetry-core >=1.0.0
+    - poetry-core >=1.0.0,<2.0.0
     - poetry-dynamic-versioning >=1.0.0,<2.0.0
     - python {{ python_min }}.*
     - yarn <2
