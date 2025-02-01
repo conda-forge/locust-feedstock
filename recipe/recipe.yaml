@@ -81,9 +81,9 @@ tests:
     script:
       - locust --version
       - locust --help
-      - python -c "import locust; assert locust.__version__ == '${{ PKG_VERSION }}'"
-      - pip list | grep -iE "^locust\s*{{ version | replace('.', '\\.') }}$"
-      - locust --version | grep -iE "{{ version | replace('.', '\\.') }}"
+      - python -c "import locust; assert locust.__version__ == '${{ version }}'"
+      - pip list | grep -iE "^locust\s*${{ version | replace('.', '\\.') }}$"
+      - locust --version | grep -iE "${{ version | replace('.', '\\.') }}"
 
 about:
   license: MIT
