@@ -71,6 +71,7 @@ tests:
       run:
         - cryptography
         - mock
+        - pip
         - pyquery
         - pytest-timeout
         - python ${{ python_min }}.*
