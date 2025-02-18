@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "2.32.9"
+  version: "2.32.10"
 
 package:
   name: locust
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/locustio/locust/archive/refs/tags/${{ version }}.tar.gz
-  sha256: 290e57066316c3f74a169eb768cd07078bed6402dde9defc401f0bafa63c6b46
+  sha256: 3ba8e00fcb9d4257583d983d23a2342e3065786e8ca1442cc0aca6e43da2f71a
 
 build:
   number: 0
