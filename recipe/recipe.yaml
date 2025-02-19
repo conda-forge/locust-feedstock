@@ -24,8 +24,10 @@ build:
       - cd locust/webui
       - yarn
       - yarn build
+      - ${{ PYTHON }} -c "import shutil; shutil.rmtree('node_modules')"
       - cd ../..
       - ${{ PYTHON }} -m pip install . -vvv --no-deps --no-build-isolation --disable-pip-version-check
+      - ${{ PYTHON }} -c "import site, pathlib; (pathlib.Path(site.getsitepackages()[0]) / 'uv.lock').unlink()"
   python:
     entry_points:
       - locust = locust.main:main
