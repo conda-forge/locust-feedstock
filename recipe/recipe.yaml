@@ -17,7 +17,7 @@ build:
   noarch: python
   script:
     env:
-      POETRY_DYNAMIC_VERSIONING_BYPASS: ${{ version }}
+      SETUPTOOLS_SCM_PRETEND_VERSION: ${{ version }}
       SKIP_PRE_BUILD: "true"
     content:
       - rm package.json || del package.json
