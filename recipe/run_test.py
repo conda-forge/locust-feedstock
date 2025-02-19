@@ -1,14 +1,13 @@
 import shutil
-import os
 from pathlib import Path
 import site
 import subprocess
 
 import sys
 
-SRC_DIR = Path(os.environ["SRC_DIR"])
+SRC_DIR = Path.cwd()
 TEST_STEM = "locust/test"
-TEST_SRC = SRC_DIR / TEST_STEM
+TEST_SRC = SRC_DIR / "src" / TEST_STEM
 TEST_DEST = Path(site.getsitepackages()[0]) / TEST_STEM
 SKIPS = [
     "autostart_w_load_shape",
