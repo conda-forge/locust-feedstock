@@ -3,6 +3,7 @@ schema_version: 1
 
 context:
   version: "2.35.0"
+  python_check_max: 3.13
 
 package:
   name: locust
@@ -49,6 +50,7 @@ requirements:
     - pywin32-on-windows
     - pyzmq >=25.0.0
     - requests >=2.32.2
+    - setuptools >=70.0.0
     - tomli >=1.1.0
     - typing_extensions >=4.6.0
     - werkzeug >=2.0.0
@@ -56,7 +58,9 @@ requirements:
 tests:
   - python:
       pip_check: true
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - ${{ python_check_max }}.*
       imports: locust
   - files:
       recipe:
