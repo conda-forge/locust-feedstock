@@ -2,8 +2,8 @@
 schema_version: 1
 
 context:
-  version: "2.35.0"
-  python_check_max: 3.13
+  version: "2.36.2"
+  python_check_max: "3.13"
 
 package:
   name: locust
@@ -11,10 +11,12 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/l/locust/locust-${{ version }}.tar.gz
-    sha256: 97f83e591646ca3227644cfb6d4fa590e9a3e3d791ab18b216ca98be235b9b24
+    sha256: 604aff7535f5a83b7f666d32373b2dc74ad260c7c3d1dc274f4c82844be72eb6
     target_directory: dist
+    patches:
+      - 0000-optional-locust-cloud.patch
   - url: https://github.com/locustio/locust/archive/refs/tags/${{ version }}.tar.gz
-    sha256: 4122590a66ce75e035f767f3caabab9ad0d8c63c7e4f75fcace1ada96ebdeb7d
+    sha256: 94778703c210514992a316555d58a258f0c3be315044f22932d437136ab96024
     target_directory: src
 
 build:
@@ -42,7 +44,7 @@ requirements:
     - flask >=2.0.0
     - flask-cors >=3.0.10
     - flask-login >=0.6.3
-    - gevent >=24.10.1
+    - gevent >=24.10.1,<25.0.0
     - geventhttpclient >=2.3.1
     - msgpack-python >=1.0.0
     - psutil >=5.9.1
@@ -54,6 +56,8 @@ requirements:
     - tomli >=1.1.0
     - typing_extensions >=4.6.0
     - werkzeug >=2.0.0
+  run_constraints:
+    - locust-cloud >=1.20.5
 
 tests:
   - python:
