@@ -1,48 +1,12 @@
-diff --git a/locust/argument_parser.py b/locust/argument_parser.py
-index aee5771..9f72fcf 100644
---- a/locust/argument_parser.py
-+++ b/locust/argument_parser.py
-@@ -18,8 +18,6 @@ from typing import Any, NamedTuple
- from urllib.parse import urlparse
- from uuid import uuid4
- 
--from locust_cloud.args import add_locust_cloud_argparse
--
- if sys.version_info >= (3, 11):
-     import tomllib
- else:
-@@ -861,7 +859,12 @@ def get_parser(default_config_files=DEFAULT_CONFIG_FILES) -> LocustArgumentParse
-     parser = get_empty_argument_parser(add_help=True, default_config_files=default_config_files)
-     # add all the other supported arguments
-     setup_parser_arguments(parser)
--    add_locust_cloud_argparse(parser)
-+    try:
-+        from locust_cloud.args import add_locust_cloud_argparse
-+        add_locust_cloud_argparse(parser)
-+    except ImportError:
-+        pass
-+
-     # fire event to provide a hook for locustscripts and plugins to add command line arguments
-     locust.events.init_command_line_parser.fire(parser=parser)
-     return parser
 diff --git a/pyproject.toml b/pyproject.toml
-index ce52419..ffd50a2 100644
+index 6783314..3bec3e9 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -50,7 +50,6 @@ dependencies = [
      "Flask-Cors>=3.0.10",
      "pywin32; sys_platform == 'win32'",
      "setuptools>=70.0.0",
--    "locust-cloud>=1.20.5",
+-    "locust-cloud>=1.21.1",
      "gevent>=24.10.1,<25.0.0",
  ]
  
-@@ -207,7 +206,7 @@ python = ["3.10", "3.11", "3.12", "3.13"]
- # bash -ec "PYTHONUNBUFFERED=1 timeout 20s python3 examples/rest.py >{temp_dir}/out.txt 2>/{temp_dir}/err.txt || true"
- # grep -qm 1 'my custom error message with response text, response was {"args"' {temp_dir}/out.txt
- # grep -qm 1 'ZeroDivisionError: division by zero at.*Response was {"ar' {temp_dir}/out.txt
--# bash -ec '! grep . {temp_dir}/err.txt' # should be empty 
-+# bash -ec '! grep . {temp_dir}/err.txt' # should be empty
- all = [
-     "pytest {args:locust/test}",
-     "bash -ec 'PYTHONUNBUFFERED=1 python3 examples/debugging_advanced.py | grep done'",
