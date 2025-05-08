@@ -6,7 +6,6 @@ index 6783314..3bec3e9 100644
      "Flask-Cors>=3.0.10",
      "pywin32; sys_platform == 'win32'",
      "setuptools>=70.0.0",
--    "locust-cloud>=1.21.1",
+-    "locust-cloud>=1.21.2",
      "gevent>=24.10.1,<25.0.0",
  ]
- 
