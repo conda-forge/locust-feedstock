@@ -27,7 +27,7 @@ build:
       SKIP_PRE_BUILD: 'true'
       LOCUST_CLOUD_MIN: ${{ locust_cloud_min }}
     content:
-      - ${{ PYTHON }} ${{ RECIPE_DIR}}/patch-locust-cloud.py
+      - ${{ PYTHON }} ${{ RECIPE_DIR }}/patch-locust-cloud.py
       - cd dist
       - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
   python:
