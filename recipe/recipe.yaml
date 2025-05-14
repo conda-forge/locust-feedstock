@@ -4,6 +4,7 @@ schema_version: 1
 context:
   version: "2.37.3"
   python_check_max: "3.13"
+  locust_cloud_min: "1.21.5"
 
 package:
   name: locust
@@ -13,8 +14,6 @@ source:
   - url: https://pypi.org/packages/source/l/locust/locust-${{ version }}.tar.gz
     sha256: 860d0fee8438cd215fac1f33dca32090e11aa72364c0f84546267ced23d1b2de
     target_directory: dist
-    patches:
-      - 0000-optional-locust-cloud.patch
   - url: https://github.com/locustio/locust/archive/refs/tags/${{ version }}.tar.gz
     sha256: bba065524219f47783b8c932ee90fd083c3824d1496faef7d0107bda53c69c47
     target_directory: src
@@ -26,7 +25,9 @@ build:
   script:
     env:
       SKIP_PRE_BUILD: 'true'
+      LOCUST_CLOUD_MIN: ${{ locust_cloud_min }}
     content:
+      - ${{ PYTHON }} ${{ RECIPE_DIR}}/patch-locust-cloud.py
       - cd dist
       - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
   python:
@@ -57,7 +58,7 @@ requirements:
     - typing_extensions >=4.6.0
     - werkzeug >=2.0.0
   run_constraints:
-    - locust-cloud >=1.21.1
+    - locust-cloud >=${{ locust_cloud_min }}
 
 tests:
   - python:
