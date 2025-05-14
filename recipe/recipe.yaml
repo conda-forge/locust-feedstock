@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "2.37.1"
+  version: "2.37.2"
   python_check_max: "3.13"
 
 package:
@@ -11,12 +11,12 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/l/locust/locust-${{ version }}.tar.gz
-    sha256: 97951b319cb08c8853ef76d4732359f04617d27be41c1bf91469b9a528b652e0
+    sha256: 87b38964284f9f1b1b11f376bceeb6653f1c885df48c2ad8af2702ddf50c802c
     target_directory: dist
     patches:
       - 0000-optional-locust-cloud.patch
   - url: https://github.com/locustio/locust/archive/refs/tags/${{ version }}.tar.gz
-    sha256: 9ced18698002af7cc3f06763d3f298087c1556ef838ed4eb05648a2041802271
+    sha256: 0700eaf67c1f46692519dcdcba1dfd163c8dba442c986f29703b1ec1227ef63f
     target_directory: src
 
 build:
