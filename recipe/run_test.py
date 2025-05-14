@@ -45,6 +45,8 @@ SKIPS = [
     "(ZMQRPC_tests and constructor)",
     # added on https://github.com/conda-forge/locust-feedstock/pull/119
     "format_utc_timestamp",
+    # added on https://github.com/conda-forge/locust-feedstock/pull/145
+    "test_client_pool_concurrency",
 ]
 
 
