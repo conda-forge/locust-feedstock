@@ -15,7 +15,7 @@ source:
     sha256: 2ea16f7e4bb1b9c41aa666eff5ea9737977a297503644043208180dd0d3dd883
     target_directory: dist
   - url: https://github.com/locustio/locust/archive/refs/tags/${{ version }}.tar.gz
-    sha256: ed1751b094a585616af4d7015a538547c60dfd200bb4b6095d1a56dd32497e11
+    sha256: 1063ed648069aa024bc788c95533e28ce6ae13f959a25ada4b56d4d5290feaa5
     target_directory: src
 
 build:
