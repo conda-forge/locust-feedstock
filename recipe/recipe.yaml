@@ -12,10 +12,10 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/l/locust/locust-${{ version }}.tar.gz
-    sha256: 2ea16f7e4bb1b9c41aa666eff5ea9737977a297503644043208180dd0d3dd883
+    sha256: 9421ff51ce023a5ddff74f2544a13310f7929ca02452be2663130ffab26585a1
     target_directory: dist
   - url: https://github.com/locustio/locust/archive/refs/tags/${{ version }}.tar.gz
-    sha256: 1063ed648069aa024bc788c95533e28ce6ae13f959a25ada4b56d4d5290feaa5
+    sha256: 90ffe3c46545fb00a57baa1221c8c4bcf14dba60a78e589dc093af38ed1aebb3
     target_directory: src
 
 build:
