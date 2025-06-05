@@ -2,9 +2,9 @@
 schema_version: 1
 
 context:
-  version: "2.37.7"
+  version: "2.37.9"
   python_check_max: "3.13"
-  locust_cloud_min: "1.23.0"
+  locust_cloud_min: "1.23.1"
 
 package:
   name: locust
@@ -12,10 +12,10 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/l/locust/locust-${{ version }}.tar.gz
-    sha256: 9421ff51ce023a5ddff74f2544a13310f7929ca02452be2663130ffab26585a1
+    sha256: e43673b594ec5ecde4f9ba6e0d5c66c00d7c0ae93591951abe83e8d186c67175
     target_directory: dist
   - url: https://github.com/locustio/locust/archive/refs/tags/${{ version }}.tar.gz
-    sha256: 90ffe3c46545fb00a57baa1221c8c4bcf14dba60a78e589dc093af38ed1aebb3
+    sha256: 0191827b19d95961ae514015a2601fd63d5bf6d2b343fbe941d8e97cd3b3ab1f
     target_directory: src
 
 build:
@@ -45,7 +45,7 @@ requirements:
     - flask >=2.0.0
     - flask-cors >=3.0.10
     - flask-login >=0.6.3
-    - gevent >=24.10.1,<25.0.0
+    - gevent >=24.10.1,<26.0.0
     - geventhttpclient >=2.3.1
     - msgpack-python >=1.0.0
     - psutil >=5.9.1
