@@ -5,6 +5,8 @@ context:
   version: "2.40.1"
   python_check_max: "3.13"
   locust_cloud_min: "1.26.3"
+  pytest_min: "8.3.3"
+  pytest_max: "9.0.0"
 
 package:
   name: locust
@@ -49,6 +51,7 @@ requirements:
     - geventhttpclient >=2.3.1
     - msgpack-python >=1.0.0
     - psutil >=5.9.1
+    - pytest >=${{ pytest_min }},<${{ pytest_max }}
     - python >=${{ python_min }}
     - python-socketio ==5.13.0
     - pywin32-on-windows
@@ -79,6 +82,7 @@ tests:
         - mock
         - pip
         - pyquery
+        - pytest ${{ pytest_min }}.*
         - pytest-timeout
         - python ${{ python_min }}.*
         - retry
