@@ -47,6 +47,8 @@ SKIPS = [
     "format_utc_timestamp",
     # added on https://github.com/conda-forge/locust-feedstock/pull/145
     "test_client_pool_concurrency",
+    # added on https://github.com/conda-forge/locust-feedstock/pull/171
+    "processes_workers_quit_unexpected",
 ]
 
 
