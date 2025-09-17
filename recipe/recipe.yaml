@@ -4,7 +4,7 @@ schema_version: 1
 context:
   version: "2.40.5"
   python_check_max: "3.13"
-  locust_cloud_min: "1.26.3"
+  locust_cloud_min: "1.27.0"
   pytest_min: "8.3.3"
   pytest_max: "9.0.0"
 
