@@ -49,6 +49,9 @@ SKIPS = [
     "test_client_pool_concurrency",
     # added on https://github.com/conda-forge/locust-feedstock/pull/171
     "processes_workers_quit_unexpected",
+    # added on https://github.com/conda-forge/uv-feedstock/pull/265
+    "unknown_command_line_arg",
+    "warning_with_lower_user_count_than_fixed_count",
 ]
 
 
