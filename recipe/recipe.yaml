@@ -3,10 +3,8 @@ schema_version: 1
 
 context:
   version: "2.42.0"
-  # revisit after https://github.com/locustio/locust/pull/3236
-  # python_check_max: "3.14"
-  python_check_max: "3.13"
-  locust_cloud_min: "1.27.2"
+  python_check_max: "3.14"
+  locust_cloud_min: "1.27.6"
   pytest_min: "8.3.3"
   pytest_max: "9.0.0"
 
@@ -49,7 +47,7 @@ requirements:
     - flask >=2.0.0
     - flask-cors >=3.0.10
     - flask-login >=0.6.3
-    - gevent >=24.10.1,<25.8.1
+    - gevent >=24.10.1,<26.0.0,!=25.8.1
     - geventhttpclient >=2.3.1
     - msgpack-python >=1.0.0
     - psutil >=5.9.1
@@ -58,7 +56,7 @@ requirements:
     - python-socketio >=5.13.0
     - pywin32-on-windows
     - pyzmq >=25.0.0
-    - requests >=2.32.2
+    - requests >=2.32.2,<2.32.5
     - setuptools >=70.0.0
     - tomli >=1.1.0
     - typing_extensions >=4.6.0
@@ -70,6 +68,7 @@ requirements:
     - psycopg >=3.2.1
     - pymilvus >=2.5.0
     - pymongo >=4.8.0
+    - dnspython >=2.8.0
 
 tests:
   - python:
