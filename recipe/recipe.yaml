@@ -1,6 +1,9 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
 schema_version: 1
 
+# this recipe is kind of heavy: see this script for more automation
+# https://gist.github.com/bollwyvl/d6041fcf86348ca719cf925b6d045aca
+
 context:
   version: "2.42.4"
   python_check_max: "3.14"
@@ -161,7 +164,7 @@ outputs:
             - src/locust/test/
         requirements:
           run:
-            - cryptography >=43.0.1,<44.0.0
+            - cryptography
             - pyquery >=2.0.0,<3.0.0
             - pytest-cov
             - python ${{ python_min }}.*
