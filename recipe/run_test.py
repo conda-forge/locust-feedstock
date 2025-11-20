@@ -54,6 +54,8 @@ SKIPS = [
     "warning_with_lower_user_count_than_fixed_count",
     # hotfix after https://github.com/conda-forge/locust-feedstock/pull/185
     "json_file",
+    # added on https://github.com/conda-forge/locust-feedstock/pull/187
+    "json_schema"
 ]
 
 
