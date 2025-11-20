@@ -36,6 +36,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-locust-green.svg)](https://anaconda.org/conda-forge/locust) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/locust.svg)](https://anaconda.org/conda-forge/locust) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/locust.svg)](https://anaconda.org/conda-forge/locust) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/locust.svg)](https://anaconda.org/conda-forge/locust) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-locust--with--all-green.svg)](https://anaconda.org/conda-forge/locust-with-all) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/locust-with-all.svg)](https://anaconda.org/conda-forge/locust-with-all) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/locust-with-all.svg)](https://anaconda.org/conda-forge/locust-with-all) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/locust-with-all.svg)](https://anaconda.org/conda-forge/locust-with-all) |
 
 Installing locust
 =================
@@ -47,16 +48,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `locust` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `locust, locust-with-all` can be installed with `conda`:
 
 ```
-conda install locust
+conda install locust locust-with-all
 ```
 
 or with `mamba`:
 
 ```
-mamba install locust
+mamba install locust locust-with-all
 ```
 
 It is possible to list all of the versions of `locust` available on your platform with `conda`:
