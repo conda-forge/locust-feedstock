@@ -3,11 +3,100 @@ About locust-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/locust-feedstock/blob/main/LICENSE.txt)
 
+
+About locust
+------------
+
 Home: https://locust.io/
 
 Package license: MIT
 
 Summary: Website load testing framework
+
+Development: https://github.com/locustio/locust
+
+Documentation: https://docs.locust.io/
+
+Locust is an easy-to-use, distributed, user load testing tool. It is
+intended for load-testing web sites (or other systems) and figuring out how
+many concurrent users a system can handle.
+
+About locust-with-all
+---------------------
+
+Home: https://locust.io/
+
+Package license: MIT
+
+Summary: Website load testing framework (with [all])
+
+Development: https://github.com/locustio/locust
+
+Documentation: https://docs.locust.io/
+
+Locust is an easy-to-use, distributed, user load testing tool. It is
+intended for load-testing web sites (or other systems) and figuring out how
+many concurrent users a system can handle.
+
+About locust-with-dns
+---------------------
+
+Home: https://locust.io/
+
+Package license: MIT
+
+Summary: Website load testing framework (with [dns])
+
+Development: https://github.com/locustio/locust
+
+Documentation: https://docs.locust.io/
+
+Locust is an easy-to-use, distributed, user load testing tool. It is
+intended for load-testing web sites (or other systems) and figuring out how
+many concurrent users a system can handle.
+
+About locust-with-milvus
+------------------------
+
+Home: https://locust.io/
+
+Package license: MIT
+
+Summary: Website load testing framework (with [milvus])
+
+Development: https://github.com/locustio/locust
+
+Documentation: https://docs.locust.io/
+
+Locust is an easy-to-use, distributed, user load testing tool. It is
+intended for load-testing web sites (or other systems) and figuring out how
+many concurrent users a system can handle.
+
+About locust-with-mqtt
+----------------------
+
+Home: https://locust.io/
+
+Package license: MIT
+
+Summary: Website load testing framework (with [mqtt])
+
+Development: https://github.com/locustio/locust
+
+Documentation: https://docs.locust.io/
+
+Locust is an easy-to-use, distributed, user load testing tool. It is
+intended for load-testing web sites (or other systems) and figuring out how
+many concurrent users a system can handle.
+
+About locust-with-otel
+----------------------
+
+Home: https://locust.io/
+
+Package license: MIT
+
+Summary: Website load testing framework (with [otel])
 
 Development: https://github.com/locustio/locust
 
@@ -36,6 +125,11 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-locust-green.svg)](https://anaconda.org/conda-forge/locust) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/locust.svg)](https://anaconda.org/conda-forge/locust) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/locust.svg)](https://anaconda.org/conda-forge/locust) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/locust.svg)](https://anaconda.org/conda-forge/locust) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-locust--with--all-green.svg)](https://anaconda.org/conda-forge/locust-with-all) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/locust-with-all.svg)](https://anaconda.org/conda-forge/locust-with-all) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/locust-with-all.svg)](https://anaconda.org/conda-forge/locust-with-all) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/locust-with-all.svg)](https://anaconda.org/conda-forge/locust-with-all) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-locust--with--dns-green.svg)](https://anaconda.org/conda-forge/locust-with-dns) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/locust-with-dns.svg)](https://anaconda.org/conda-forge/locust-with-dns) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/locust-with-dns.svg)](https://anaconda.org/conda-forge/locust-with-dns) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/locust-with-dns.svg)](https://anaconda.org/conda-forge/locust-with-dns) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-locust--with--milvus-green.svg)](https://anaconda.org/conda-forge/locust-with-milvus) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/locust-with-milvus.svg)](https://anaconda.org/conda-forge/locust-with-milvus) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/locust-with-milvus.svg)](https://anaconda.org/conda-forge/locust-with-milvus) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/locust-with-milvus.svg)](https://anaconda.org/conda-forge/locust-with-milvus) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-locust--with--mqtt-green.svg)](https://anaconda.org/conda-forge/locust-with-mqtt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/locust-with-mqtt.svg)](https://anaconda.org/conda-forge/locust-with-mqtt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/locust-with-mqtt.svg)](https://anaconda.org/conda-forge/locust-with-mqtt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/locust-with-mqtt.svg)](https://anaconda.org/conda-forge/locust-with-mqtt) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-locust--with--otel-green.svg)](https://anaconda.org/conda-forge/locust-with-otel) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/locust-with-otel.svg)](https://anaconda.org/conda-forge/locust-with-otel) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/locust-with-otel.svg)](https://anaconda.org/conda-forge/locust-with-otel) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/locust-with-otel.svg)](https://anaconda.org/conda-forge/locust-with-otel) |
 
 Installing locust
 =================
@@ -47,16 +141,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `locust` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `locust, locust-with-all, locust-with-dns, locust-with-milvus, locust-with-mqtt, locust-with-otel` can be installed with `conda`:
 
 ```
-conda install locust
+conda install locust locust-with-all locust-with-dns locust-with-milvus locust-with-mqtt locust-with-otel
 ```
 
 or with `mamba`:
 
 ```
-mamba install locust
+mamba install locust locust-with-all locust-with-dns locust-with-milvus locust-with-mqtt locust-with-otel
 ```
 
 It is possible to list all of the versions of `locust` available on your platform with `conda`:
