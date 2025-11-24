@@ -82,6 +82,25 @@ outputs:
           - locust --version
           - locust --help
   - package:
+      name: locust-with-milvus
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - ${{ pin_subpackage("locust", exact=True) }}
+        - pymilvus >=2.5.0
+    tests:
+      - python:
+          imports: locust
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_check_max }}.*
+    about:
+      summary: Website load testing framework (with [milvus])
+      license: MIT
+      license_file: dist/LICENSE
+  - package:
       name: locust-with-mqtt
     build:
       noarch: generic
@@ -150,6 +169,7 @@ outputs:
       run:
         - ${{ pin_subpackage("locust", exact=True) }}
         - ${{ pin_subpackage("locust-with-dns", exact=True) }}
+        - ${{ pin_subpackage("locust-with-milvus", exact=True) }}
         - ${{ pin_subpackage("locust-with-mqtt", exact=True) }}
         - ${{ pin_subpackage("locust-with-otel", exact=True) }}
     tests:
