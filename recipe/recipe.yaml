@@ -5,9 +5,8 @@ schema_version: 1
 # https://gist.github.com/bollwyvl/d6041fcf86348ca719cf925b6d045aca
 
 context:
-  version: "2.42.6"
+  version: "2.43.0"
   python_check_max: "3.14"
-  locust_cloud_min: "1.29.4"
 
 recipe:
   name: locust-split
@@ -15,10 +14,10 @@ recipe:
 
 source:
   - url: https://pypi.org/packages/source/l/locust/locust-${{ version }}.tar.gz
-    sha256: fa603f4ac1c48b9ac56f4c34355944ebfd92590f4197b6d126ea216bd81cc036
+    sha256: 7a0d76e842c0dab7dccde6bd8abaef5e2c2966f8ab69c34761341bb80af66db9
     target_directory: dist
   - url: https://github.com/locustio/locust/archive/refs/tags/${{ version }}.tar.gz
-    sha256: d6db4afd9f6a398d22b928ed5311070afba1471cf8353622a4e1c94fcec38571
+    sha256: 06f25492084aa662fabd69f2cecc5c622baa693db8e30f3f86ec54145be3c29d
     target_directory: src
 
 build:
@@ -33,9 +32,7 @@ outputs:
       script:
         env:
           SKIP_PRE_BUILD: 'true'
-          LOCUST_CLOUD_MIN: ${{ locust_cloud_min }}
         content:
-          - ${{ PYTHON }} ${{ RECIPE_DIR }}/patch-locust-cloud.py
           - cd dist
           - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
       python:
@@ -62,12 +59,10 @@ outputs:
         - python-socketio >=5.13.0
         - pywin32-on-windows
         - pyzmq >=25.0.0
-        - requests >=2.32.2,<2.32.5
+        - requests >=2.32.2
         - tomli >=1.1.0
         - typing_extensions >=4.6.0
         - werkzeug >=2.0.0
-      run_constraints:
-        - locust-cloud >=${{ locust_cloud_min }}
     tests:
       - python:
           imports: locust
