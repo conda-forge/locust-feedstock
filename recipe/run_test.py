@@ -55,7 +55,9 @@ SKIPS = [
     # hotfix after https://github.com/conda-forge/locust-feedstock/pull/185
     "json_file",
     # added on https://github.com/conda-forge/locust-feedstock/pull/187
-    "json_schema"
+    "json_schema",
+    # added on https://github.com/conda-forge/locust-feedstock/pull/196
+    "processes_autodetect",
 ]
 
 
