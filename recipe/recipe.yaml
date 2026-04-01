@@ -95,6 +95,7 @@ outputs:
       summary: Website load testing framework (with [milvus])
       license: MIT
       license_file: dist/LICENSE
+
   - package:
       name: locust-with-mqtt
     build:
@@ -114,6 +115,7 @@ outputs:
       summary: Website load testing framework (with [mqtt])
       license: MIT
       license_file: dist/LICENSE
+
   - package:
       name: locust-with-dns
     build:
@@ -133,6 +135,7 @@ outputs:
       summary: Website load testing framework (with [dns])
       license: MIT
       license_file: dist/LICENSE
+
   - package:
       name: locust-with-otel
     build:
@@ -156,6 +159,27 @@ outputs:
       summary: Website load testing framework (with [otel])
       license: MIT
       license_file: dist/LICENSE
+
+  - package:
+      name: locust-with-qdrant
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - ${{ pin_subpackage("locust", exact=True) }}
+        - qdrant-client >=1.16.2
+    tests:
+      - python:
+          imports: locust
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_check_max }}.*
+    about:
+      summary: Website load testing framework (with [qdrant])
+      license: MIT
+      license_file: dist/LICENSE
+
   - package:
       name: locust-with-all
     build:
@@ -167,6 +191,7 @@ outputs:
         - ${{ pin_subpackage("locust-with-milvus", exact=True) }}
         - ${{ pin_subpackage("locust-with-mqtt", exact=True) }}
         - ${{ pin_subpackage("locust-with-otel", exact=True) }}
+        - ${{ pin_subpackage("locust-with-qdrant", exact=True) }}
     tests:
       - python:
           imports: locust
