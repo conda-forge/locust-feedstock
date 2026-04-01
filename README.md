@@ -7,7 +7,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/locust-feedstoc
 About locust
 ------------
 
-Home: https://locust.io/
+Home: https://pypi.org/project/locust
 
 Package license: MIT
 
@@ -24,7 +24,7 @@ many concurrent users a system can handle.
 About locust-with-all
 ---------------------
 
-Home: https://locust.io/
+Home: https://pypi.org/project/locust
 
 Package license: MIT
 
@@ -41,7 +41,7 @@ many concurrent users a system can handle.
 About locust-with-dns
 ---------------------
 
-Home: https://locust.io/
+Home: https://pypi.org/project/locust
 
 Package license: MIT
 
@@ -58,7 +58,7 @@ many concurrent users a system can handle.
 About locust-with-milvus
 ------------------------
 
-Home: https://locust.io/
+Home: https://pypi.org/project/locust
 
 Package license: MIT
 
@@ -75,7 +75,7 @@ many concurrent users a system can handle.
 About locust-with-mqtt
 ----------------------
 
-Home: https://locust.io/
+Home: https://pypi.org/project/locust
 
 Package license: MIT
 
@@ -92,11 +92,28 @@ many concurrent users a system can handle.
 About locust-with-otel
 ----------------------
 
-Home: https://locust.io/
+Home: https://pypi.org/project/locust
 
 Package license: MIT
 
 Summary: Website load testing framework (with [otel])
+
+Development: https://github.com/locustio/locust
+
+Documentation: https://docs.locust.io/
+
+Locust is an easy-to-use, distributed, user load testing tool. It is
+intended for load-testing web sites (or other systems) and figuring out how
+many concurrent users a system can handle.
+
+About locust-with-qdrant
+------------------------
+
+Home: https://pypi.org/project/locust
+
+Package license: MIT
+
+Summary: Website load testing framework (with [qdrant])
 
 Development: https://github.com/locustio/locust
 
@@ -129,6 +146,7 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-locust--with--milvus-green.svg)](https://anaconda.org/conda-forge/locust-with-milvus) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/locust-with-milvus.svg)](https://anaconda.org/conda-forge/locust-with-milvus) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/locust-with-milvus.svg)](https://anaconda.org/conda-forge/locust-with-milvus) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/locust-with-milvus.svg)](https://anaconda.org/conda-forge/locust-with-milvus) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-locust--with--mqtt-green.svg)](https://anaconda.org/conda-forge/locust-with-mqtt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/locust-with-mqtt.svg)](https://anaconda.org/conda-forge/locust-with-mqtt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/locust-with-mqtt.svg)](https://anaconda.org/conda-forge/locust-with-mqtt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/locust-with-mqtt.svg)](https://anaconda.org/conda-forge/locust-with-mqtt) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-locust--with--otel-green.svg)](https://anaconda.org/conda-forge/locust-with-otel) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/locust-with-otel.svg)](https://anaconda.org/conda-forge/locust-with-otel) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/locust-with-otel.svg)](https://anaconda.org/conda-forge/locust-with-otel) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/locust-with-otel.svg)](https://anaconda.org/conda-forge/locust-with-otel) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-locust--with--qdrant-green.svg)](https://anaconda.org/conda-forge/locust-with-qdrant) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/locust-with-qdrant.svg)](https://anaconda.org/conda-forge/locust-with-qdrant) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/locust-with-qdrant.svg)](https://anaconda.org/conda-forge/locust-with-qdrant) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/locust-with-qdrant.svg)](https://anaconda.org/conda-forge/locust-with-qdrant) |
 
 Installing locust
 =================
@@ -140,16 +158,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `locust, locust-with-all, locust-with-dns, locust-with-milvus, locust-with-mqtt, locust-with-otel` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `locust, locust-with-all, locust-with-dns, locust-with-milvus, locust-with-mqtt, locust-with-otel, locust-with-qdrant` can be installed with `conda`:
 
 ```
-conda install locust locust-with-all locust-with-dns locust-with-milvus locust-with-mqtt locust-with-otel
+conda install locust locust-with-all locust-with-dns locust-with-milvus locust-with-mqtt locust-with-otel locust-with-qdrant
 ```
 
 or with `mamba`:
 
 ```
-mamba install locust locust-with-all locust-with-dns locust-with-milvus locust-with-mqtt locust-with-otel
+mamba install locust locust-with-all locust-with-dns locust-with-milvus locust-with-mqtt locust-with-otel locust-with-qdrant
 ```
 
 It is possible to list all of the versions of `locust` available on your platform with `conda`:
