@@ -58,6 +58,7 @@ SKIPS = [
     "json_schema",
     # added on https://github.com/conda-forge/locust-feedstock/pull/196
     "processes_autodetect",
+    "pytest_style_locustfile",
 ]
 
 
