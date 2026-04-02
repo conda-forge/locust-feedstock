@@ -5,7 +5,7 @@ schema_version: 1
 # https://gist.github.com/bollwyvl/d6041fcf86348ca719cf925b6d045aca
 
 context:
-  version: "2.43.3"
+  version: "2.43.4"
   python_check_max: "3.14"
 
 recipe:
@@ -14,10 +14,10 @@ recipe:
 
 source:
   - url: https://pypi.org/packages/source/l/locust/locust-${{ version }}.tar.gz
-    sha256: b5d2c48f8f7d443e3abdfdd6ec2f7aebff5cd74fab986bcf1e95b375b5c5a54b
+    sha256: 4ace60f07f5fa9bf08d1b64da25915707befca19a790897eed6372656824deee
     target_directory: dist
   - url: https://github.com/locustio/locust/archive/refs/tags/${{ version }}.tar.gz
-    sha256: b00321edf5ec2e517d316cdc2e8fa5ae44ce75f36760df415e7206c9fdeaeacd
+    sha256: 6ba8c10b4e9a47d1d770305537aa94b38bd3a31f9781001aa4b3bf36fcb23949
     target_directory: src
 
 build:
@@ -95,6 +95,7 @@ outputs:
       summary: Website load testing framework (with [milvus])
       license: MIT
       license_file: dist/LICENSE
+
   - package:
       name: locust-with-mqtt
     build:
@@ -114,6 +115,7 @@ outputs:
       summary: Website load testing framework (with [mqtt])
       license: MIT
       license_file: dist/LICENSE
+
   - package:
       name: locust-with-dns
     build:
@@ -133,6 +135,7 @@ outputs:
       summary: Website load testing framework (with [dns])
       license: MIT
       license_file: dist/LICENSE
+
   - package:
       name: locust-with-otel
     build:
@@ -156,6 +159,27 @@ outputs:
       summary: Website load testing framework (with [otel])
       license: MIT
       license_file: dist/LICENSE
+
+  - package:
+      name: locust-with-qdrant
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - ${{ pin_subpackage("locust", exact=True) }}
+        - qdrant-client >=1.16.2
+    tests:
+      - python:
+          imports: locust
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_check_max }}.*
+    about:
+      summary: Website load testing framework (with [qdrant])
+      license: MIT
+      license_file: dist/LICENSE
+
   - package:
       name: locust-with-all
     build:
@@ -167,6 +191,7 @@ outputs:
         - ${{ pin_subpackage("locust-with-milvus", exact=True) }}
         - ${{ pin_subpackage("locust-with-mqtt", exact=True) }}
         - ${{ pin_subpackage("locust-with-otel", exact=True) }}
+        - ${{ pin_subpackage("locust-with-qdrant", exact=True) }}
     tests:
       - python:
           imports: locust
@@ -194,7 +219,7 @@ about:
   license: MIT
   license_file: dist/LICENSE
   summary: Website load testing framework
-  homepage: https://locust.io
+  homepage: https://pypi.org/project/locust
   repository: https://github.com/locustio/locust
   documentation: https://docs.locust.io
   description: |
