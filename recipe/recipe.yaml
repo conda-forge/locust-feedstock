@@ -7,6 +7,7 @@ schema_version: 1
 context:
   version: "2.46.7"
   python_check_max: "3.14"
+  summary: Website load testing framework
 
 recipe:
   name: locust-split
@@ -34,7 +35,7 @@ outputs:
           SKIP_PRE_BUILD: 'true'
         content:
           - cd dist
-          - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
+          - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check --check-build-dependencies
       python:
         entry_points:
           - locust = locust.main:main
@@ -57,12 +58,17 @@ outputs:
         - python >=${{ python_min }}
         - python-engineio >=4.12.2
         - python-socketio >=5.13.0
-        - pywin32-on-windows
+        - pywin32
         - pyzmq >=25.0.0
-        - requests >=2.32.2
+        - requests >=2.33.1
         - typing_extensions >=4.6.0
         - werkzeug >=2.0.0
     tests:
+      - package_contents:
+          strict: true
+          site_packages:
+            - locust/**
+            - locust-${{ version }}.dist-info/**
       - python:
           imports: locust
           pip_check: true
@@ -75,6 +81,12 @@ outputs:
         script:
           - locust --version
           - locust --help
+    about:
+      description: |
+        Locust is an easy-to-use, distributed, user load testing tool. It is
+        intended for load-testing web sites (or other systems) and figuring out how
+        many concurrent users a system can handle.
+
   - package:
       name: locust-with-milvus
     build:
@@ -91,9 +103,8 @@ outputs:
             - ${{ python_min }}.*
             - ${{ python_check_max }}.*
     about:
-      summary: Website load testing framework (with [milvus])
-      license: MIT
-      license_file: dist/LICENSE
+      summary: ${{ summary }} (with [milvus])
+
   - package:
       name: locust-with-mqtt
     build:
@@ -110,9 +121,8 @@ outputs:
             - ${{ python_min }}.*
             - ${{ python_check_max }}.*
     about:
-      summary: Website load testing framework (with [mqtt])
-      license: MIT
-      license_file: dist/LICENSE
+      summary: ${{ summary }} (with [mqtt])
+
   - package:
       name: locust-with-dns
     build:
@@ -129,9 +139,8 @@ outputs:
             - ${{ python_min }}.*
             - ${{ python_check_max }}.*
     about:
-      summary: Website load testing framework (with [dns])
-      license: MIT
-      license_file: dist/LICENSE
+      summary: ${{ summary }} (with [dns])
+
   - package:
       name: locust-with-otel
     build:
@@ -152,9 +161,8 @@ outputs:
             - ${{ python_min }}.*
             - ${{ python_check_max }}.*
     about:
-      summary: Website load testing framework (with [otel])
-      license: MIT
-      license_file: dist/LICENSE
+      summary: ${{ summary }} (with [otel])
+
   - package:
       name: locust-with-qdrant
     build:
@@ -171,9 +179,8 @@ outputs:
             - ${{ python_min }}.*
             - ${{ python_check_max }}.*
     about:
-      summary: Website load testing framework (with [qdrant])
-      license: MIT
-      license_file: dist/LICENSE
+      summary: ${{ summary }} (with [qdrant])
+
   - package:
       name: locust-with-all
     build:
@@ -206,20 +213,16 @@ outputs:
         script:
           file: run_test.py
     about:
-      summary: Website load testing framework (with [all])
-      license: MIT
-      license_file: dist/LICENSE
+      summary: ${{ summary }} (with [all])
+
 about:
   license: MIT
   license_file: dist/LICENSE
-  summary: Website load testing framework
+  summary: ${{ summary }}
   homepage: https://pypi.org/project/locust
   repository: https://github.com/locustio/locust
   documentation: https://docs.locust.io
-  description: |
-    Locust is an easy-to-use, distributed, user load testing tool. It is
-    intended for load-testing web sites (or other systems) and figuring out how
-    many concurrent users a system can handle.
+
 
 extra:
   feedstock name: locust
