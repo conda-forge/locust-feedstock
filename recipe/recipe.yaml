@@ -69,8 +69,11 @@ outputs:
           site_packages:
             - locust/**
             - locust-${{ version }}.dist-info/**
+            - pytest_locust/**
       - python:
-          imports: locust
+          imports:
+            - locust
+            - pytest_locust
           pip_check: true
           python_version:
             - ${{ python_min }}.*
@@ -86,7 +89,6 @@ outputs:
         Locust is an easy-to-use, distributed, user load testing tool. It is
         intended for load-testing web sites (or other systems) and figuring out how
         many concurrent users a system can handle.
-
   - package:
       name: locust-with-milvus
     build:
@@ -97,14 +99,15 @@ outputs:
         - pymilvus >=2.5.0
     tests:
       - python:
-          imports: locust
+          imports:
+            - locust
+            - pytest_locust
           pip_check: true
           python_version:
             - ${{ python_min }}.*
             - ${{ python_check_max }}.*
     about:
       summary: ${{ summary }} (with [milvus])
-
   - package:
       name: locust-with-mqtt
     build:
@@ -115,14 +118,15 @@ outputs:
         - paho-mqtt >=2.1.0
     tests:
       - python:
-          imports: locust
+          imports:
+            - locust
+            - pytest_locust
           pip_check: true
           python_version:
             - ${{ python_min }}.*
             - ${{ python_check_max }}.*
     about:
       summary: ${{ summary }} (with [mqtt])
-
   - package:
       name: locust-with-dns
     build:
@@ -133,14 +137,15 @@ outputs:
         - dnspython >=2.8.0
     tests:
       - python:
-          imports: locust
+          imports:
+            - locust
+            - pytest_locust
           pip_check: true
           python_version:
             - ${{ python_min }}.*
             - ${{ python_check_max }}.*
     about:
       summary: ${{ summary }} (with [dns])
-
   - package:
       name: locust-with-otel
     build:
@@ -155,14 +160,15 @@ outputs:
         - opentelemetry-sdk >=1.38.0
     tests:
       - python:
-          imports: locust
+          imports:
+            - locust
+            - pytest_locust
           pip_check: true
           python_version:
             - ${{ python_min }}.*
             - ${{ python_check_max }}.*
     about:
       summary: ${{ summary }} (with [otel])
-
   - package:
       name: locust-with-qdrant
     build:
@@ -173,14 +179,15 @@ outputs:
         - qdrant-client >=1.16.2
     tests:
       - python:
-          imports: locust
+          imports:
+            - locust
+            - pytest_locust
           pip_check: true
           python_version:
             - ${{ python_min }}.*
             - ${{ python_check_max }}.*
     about:
       summary: ${{ summary }} (with [qdrant])
-
   - package:
       name: locust-with-all
     build:
@@ -195,7 +202,9 @@ outputs:
         - ${{ pin_subpackage("locust-with-qdrant", exact=True) }}
     tests:
       - python:
-          imports: locust
+          imports:
+            - locust
+            - pytest_locust
           pip_check: true
           python_version:
             - ${{ python_min }}.*
@@ -214,7 +223,6 @@ outputs:
           file: run_test.py
     about:
       summary: ${{ summary }} (with [all])
-
 about:
   license: MIT
   license_file: dist/LICENSE

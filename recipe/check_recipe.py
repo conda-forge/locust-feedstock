@@ -29,6 +29,7 @@ PPT = "pyproject.toml"
 UTF8 = dict(encoding="utf-8")
 PKG_NAME = "locust"
 PKG_MOD = PKG_NAME.replace("-", "_")
+PYTEST_MOD = "pytest_locust"
 PKG_PREFIX = f"{PKG_NAME}-with"
 RECIPE_DIR = Path(__file__).parent
 
@@ -90,7 +91,7 @@ def to_conda(all_raw: list[str], extra_conda: list[str] | None = None) -> str:
 def pip_check() -> dict[str, Any]:
     return {
         "python": {
-            "imports": PKG_MOD,
+            "imports": sorted([PYTEST_MOD, PKG_MOD]),
             "pip_check": True,
             "python_version": ["${{ python_min }}.*", "${{ python_check_max }}.*"],
         }
@@ -107,7 +108,11 @@ def package_contents() -> dict[str, Any]:
     return {
         "package_contents": {
             "strict": True,
-            "site_packages": ["locust/**", "locust-${{ version }}.dist-info/**"]
+            "site_packages": [
+                "locust/**",
+                "locust-${{ version }}.dist-info/**",
+                "pytest_locust/**",
+            ]
         }
     }
 
