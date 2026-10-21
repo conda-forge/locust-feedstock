@@ -5,7 +5,7 @@ schema_version: 1
 # https://gist.github.com/bollwyvl/d6041fcf86348ca719cf925b6d045aca
 
 context:
-  version: "2.46.7"
+  version: "2.47.0"
   python_check_max: "3.14"
   summary: Website load testing framework
 
@@ -15,10 +15,10 @@ recipe:
 
 source:
   - url: https://pypi.org/packages/source/l/locust/locust-${{ version }}.tar.gz
-    sha256: cf112214068abe59615d36769db31ffd1430b67c6e5f693b9a23b8510224442b
+    sha256: 70ffe28cdb7a3224a4efb60b31d585c26343d5679fec8d5b18017ffb6893b423
     target_directory: dist
   - url: https://github.com/locustio/locust/archive/refs/tags/${{ version }}.tar.gz
-    sha256: d391a577ae71313561f8c875d200433598ee36f2512dd51a67253e89b147ac10
+    sha256: 24cacfc367b3f48452604cd586a029d18d75965ad4b07e48b3d6fc4019edd1b7
     target_directory: src
 
 build:
